@@ -9,7 +9,7 @@ export default function Home() {
       </Link>
       <Link href={'create-new'}>
         <button>Create New Template</button>
-                                    </Link>
+            </Link>
       <Link href={'create-new'}>
         <button>Import</button>
       </Link>
