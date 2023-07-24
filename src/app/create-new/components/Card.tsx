@@ -9,6 +9,7 @@ const Card = () => {
     if (buttonColor === 'green') setButtonColor('red');
     else setButtonColor('green');
   };
+
   return (
     <div className="p-2 m-2 bg-slate-200 rounded-md flex flex-col text-black w-fit max-w-sm">
       <h2 className="text-xl font-bold ">This is a card component</h2>
@@ -28,7 +29,7 @@ const Card = () => {
           buttonColor === 'red' ? 'bg-red-600' : 'bg-green-600'
         }`}
       >
-        {buttonColor === 'red' ? 'Red' : 'Green'}
+        {buttonColor === 'red' ? 'red' : 'green'}
       </button>
     </div>
   );
