@@ -3,14 +3,18 @@ name: Unit Tests on PR
 on:
   pull_request:
     branches: ['main']
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   setup:
     name: Setup
     uses: ./.github/workflows/setup.yml
 
   test:
-    runs-on: ubuntu-latest
-    needs: [setup]
     name: Test
+    runs-on: ubuntu-latest
+    needs: setup
     steps:
       - run: pnpm test
