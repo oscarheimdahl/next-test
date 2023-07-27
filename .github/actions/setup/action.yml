@@ -21,6 +21,7 @@ runs:
       with:
         node-version: 18
         cache: 'pnpm'
+        scope: '@skf-internal'
 
     - name: Setup private NPM repositories
       shell: bash
