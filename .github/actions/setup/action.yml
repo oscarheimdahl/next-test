@@ -4,6 +4,9 @@ inputs:
   GITHUB_TOKEN:
     required: true
     description: GitHub PAT for npm registry
+  TEST_INPUT:
+    required: true
+    description: Only a test, remove me
 
 runs:
   using: 'composite'
@@ -18,6 +21,12 @@ runs:
       with:
         node-version: 18
         cache: 'pnpm'
+
+    - name: Test echo step
+      shell: bash
+      run: |
+        echo "${{ inputs.TEST_INPUT }}"
+        echo "${{ inputs.GITHUB_TOKEN }}"
 
     - name: Setup private NPM repositories
       shell: bash

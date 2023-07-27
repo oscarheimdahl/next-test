@@ -1,6 +1,6 @@
 name: Setup
 
-on: workflow_dispatch
+on: push
 
 jobs:
   build:
@@ -14,3 +14,4 @@ jobs:
         uses: ./.github/actions/setup
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          TEST_INPUT: 'hello'
