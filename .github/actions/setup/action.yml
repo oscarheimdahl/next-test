@@ -25,14 +25,14 @@ runs:
 
     - name: Setup private NPM repositories
       shell: bash
-      run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
+      run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> ~/.npmrc
       env:
         GITHUB_TOKEN: '${{ inputs.GITHUB_TOKEN }}'
 
     - name: Test echo step
       shell: bash
       run: |
-        cat .npmrc
+        cat ~/.npmrc
 
     - name: Install dependencies
       shell: bash
