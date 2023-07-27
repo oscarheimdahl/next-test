@@ -23,7 +23,7 @@ jobs:
 
       - name: Authenticate private npm repos
         shell: bash
-        run: echo "//npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}" > $NPM_CONFIG_USERCONFIG
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > $NPM_CONFIG_USERCONFIG
 
       - name: Install dependencies
         run: pnpm install
