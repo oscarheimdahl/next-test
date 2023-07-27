@@ -22,20 +22,19 @@ runs:
         node-version: 18
         cache: 'pnpm'
 
-    - name: Test echo step
-      shell: bash
-      run: |
-        echo "${{ inputs.TEST_INPUT }}"
-        echo "${{ inputs.GITHUB_TOKEN }}"
-
     - name: Setup private NPM repositories
       shell: bash
       run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
       env:
         GITHUB_TOKEN: '${{ inputs.GITHUB_TOKEN }}'
 
+    - name: Test echo step
+      shell: bash
+      run: |
+        cat .npmrc
+
     - name: Install dependencies
       shell: bash
-      run: pnpm install --config .npmrc
+      run: pnpm install
       env:
         NPM_TOKEN: ${{ inputs.GITHUB_TOKEN }}
