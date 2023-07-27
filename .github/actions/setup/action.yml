@@ -36,6 +36,6 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: pnpm install --userconfig .npmrc
+      run: pnpm install --config .npmrc
       env:
         NPM_TOKEN: ${{ inputs.GITHUB_TOKEN }}
