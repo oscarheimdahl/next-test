@@ -1,9 +1,42 @@
+import { getTokens } from './auth';
+
 const SSO_URL = 'https://sso-api.sandbox.users.enlight.skf.com';
 
 export type AuthTokens = {
   accessToken: string;
   identityToken: string;
   refreshToken: string;
+};
+
+export type User = {
+  email: string;
+  givenName: string;
+  surname: string;
+  status: 'active' | 'inactive';
+  // language: SupportedLocale;
+  // settings: { systemOfUnits: MeasurementSystem };
+  // id: UserID;
+  // companyId: CompanyID;
+  // createdDate: TimestampRFC3339;
+  // updatedDate: TimestampRFC3339;
+  // inviteSentDate: TimestampRFC3339 | '';
+  // roles: UserRole[];
+};
+
+type FetchMeResponse = {
+  data: User;
+};
+
+export const fetchMe = async () => {
+  const result = await fetch(`${SSO_URL}/users/me`, {
+    headers: {
+      Authorization: (await getTokens()).accessToken,
+    },
+  });
+
+  const body: FetchMeResponse = await result.json();
+
+  return body.data;
 };
 
 type InitiateSignInResponse = {

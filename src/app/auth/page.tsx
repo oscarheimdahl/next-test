@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
-import { generateActiveNonce, setLocalStorageTokens } from '../helpers/auth';
+import { generateActiveNonce, setLocalStorageTokens } from '@/helpers/auth';
+import { fetchTokens } from '@/helpers/authApi';
 import { useRouter } from 'next/navigation';
-import { fetchTokens } from '../helpers/authApi';
+import { useEffect } from 'react';
 
 const ENLIGHT_CLIENT_ID = '300986fd-1ab2-4955-8c53-6a8e1994fdf6';
 
@@ -34,8 +34,8 @@ const Auth = () => {
       window.location.replace(authURL.toString());
     };
     authenticate();
-  }, []);
-  return <div>page</div>;
+  }, [router]);
+  return <div>Authorizing...</div>;
 };
 
 export default Auth;
