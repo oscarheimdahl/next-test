@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
-import { AuthTokens, initiateSignIn } from './authApi';
 import jwt from 'jwt-decode';
+import { AuthTokens, initiateSignIn } from './authApi';
 
 export const NEED_TO_SIGN_IN_ERROR = 'need_to_sign_in';
 
@@ -70,31 +69,3 @@ export const generateActiveNonce = () => {
 
 const isActiveNonce = (nonce: string) =>
   window.sessionStorage.getItem(`${NONCE_STORAGE_PREFIX}${nonce}`) !== null;
-
-const REFRESH_TOKEN_INTERVAL = 60 * 1000;
-
-export const useRefreshTokens = () => {
-  let fetchNewTokensTimeout: NodeJS.Timeout | null = null;
-
-  const refreshTokens = async (refreshToken: string) => {
-    const newTokens = await initiateSignIn(refreshToken);
-    setLocalStorageTokens(newTokens);
-
-    fetchNewTokensTimeout = setTimeout(() => {
-      refreshTokens(refreshToken);
-    }, REFRESH_TOKEN_INTERVAL);
-
-    return newTokens;
-  };
-
-  useEffect(() => {
-    const refreshToken = getLocalStorageTokens().refreshToken;
-    if (!refreshToken) return;
-    refreshTokens(refreshToken);
-
-    return () => {
-      if (fetchNewTokensTimeout) clearTimeout(fetchNewTokensTimeout);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-};

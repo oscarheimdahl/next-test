@@ -7,7 +7,7 @@ import {
   QueryClientProvider,
   QueryErrorResetBoundary,
 } from 'react-query';
-import { useRefreshTokens } from '@/helpers/auth';
+import { useRefreshTokens } from '@/hooks/useRefreshTokens';
 import ErrorFallback from './error-fallback';
 
 const queryClient = new QueryClient({
