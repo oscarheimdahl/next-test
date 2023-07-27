@@ -1,9 +1,10 @@
 'use client';
+import { getTokens } from '@/helpers/auth';
+import { User, fetchMe } from '@/helpers/authApi';
+import { Button, Icon } from '@skf-internal/ui-components-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { decodeToken, getTokens } from '@/helpers/auth';
-import { AuthTokens, User, fetchMe } from '@/helpers/authApi';
 import { useMutation } from 'react-query';
 
 export default function Home() {
@@ -48,25 +49,32 @@ export default function Home() {
       </h3>
       <nav className="flex flex-col gap-2 m-2 w-fit ">
         <Link className="flex" href={'example-page'}>
-          <button className="bg-yellow-500 p-2 rounded-md w-full">
+          <Button
+            className="w-full"
+            feType="secondary"
+            feSize="sm"
+            feIcon={{ feIcon: 'paper', position: 'right' }}
+          >
             Example page
-          </button>
+          </Button>
         </Link>
-
-        <div className="relative ">
-          {isSuccess && (
-            <span className="absolute -right-8 w-6 h-6 text-sm grid place-content-center bg-green-600 rounded-full p-1 top-1/2 -translate-y-1/2">
-              ✔
-            </span>
-          )}
-          <button
+        <div className="relative">
+          <Button
+            className={'w-full'}
+            feLoading={isLoading}
+            feType="primary"
             onClick={() => mutate()}
-            className={`w-full bg-red-500 p-2 rounded-md ${
-              isLoading ? 'animate-pulse' : ''
-            }`}
           >
             Test fetch
-          </button>
+          </Button>
+          {isSuccess && (
+            <Icon
+              className="absolute top-1/2 -translate-y-1/2 translate-x-1/2"
+              feIcon="checkCircle"
+              feSize="lg"
+              feColor="green"
+            />
+          )}
         </div>
       </nav>
     </div>
