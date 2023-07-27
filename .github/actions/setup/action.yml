@@ -30,7 +30,7 @@ runs:
 
     - name: Setup private NPM repositories
       shell: bash
-      run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" > $NPM_CONFIG_USERCONFIG
+      run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" > ~/.npmrc
       env:
         GITHUB_TOKEN: '${{ inputs.GITHUB_TOKEN }}'
 
