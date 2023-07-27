@@ -1,4 +1,5 @@
 name: 'Setup'
+description: 'Sets up dependencies for project'
 inputs:
   GITHUB_TOKEN:
     required: true
