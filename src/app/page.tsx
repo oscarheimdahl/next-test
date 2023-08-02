@@ -68,12 +68,9 @@ export default function Home() {
             Test fetch
           </Button>
           {isSuccess && (
-            <Icon
-              className="absolute top-1/2 -translate-y-1/2 translate-x-1/2"
-              feIcon="checkCircle"
-              feSize="lg"
-              feColor="green"
-            />
+            <div className="absolute top-1/2 right-0 bg-green-700 rounded-full h-6 w-6 grid place-content-center -translate-y-1/2 translate-x-[125%]">
+              <Icon feIcon="check" feColor="white" />
+            </div>
           )}
         </div>
       </nav>

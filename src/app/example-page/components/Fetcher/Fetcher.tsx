@@ -19,7 +19,7 @@ const Fetcher = () => {
   if (isLoading)
     renderedText = <span className="animate-pulse">Loading...</span>;
   return (
-    <div>
+    <div className="border-2 border-white w-fit p-2  rounded-md">
       Example of some fetching logic: <br /> {renderedText}
     </div>
   );

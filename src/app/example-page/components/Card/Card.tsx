@@ -11,7 +11,7 @@ const Card = () => {
   };
 
   return (
-    <div className="p-4 m-2 bg-slate-200 rounded-md flex flex-col text-black w-fit max-w-sm">
+    <div className="p-4 bg-slate-200 rounded-md flex flex-col text-black w-fit max-w-sm">
       <h2 className="t mb-2 text-xl font-bold ">This is a card component</h2>
       <ul>
         <li>

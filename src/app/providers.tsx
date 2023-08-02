@@ -9,6 +9,7 @@ import {
 } from 'react-query';
 import { useRefreshTokens } from '@/hooks/useRefreshTokens';
 import ErrorFallback from './error-fallback';
+import { useRehydrateStore } from '@/hooks/useRehydrateStore';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,6 +20,7 @@ const queryClient = new QueryClient({
 
 export default function Providers({ children }: { children: ReactNode }) {
   useRefreshTokens();
+  useRehydrateStore();
 
   return (
     <QueryClientProvider client={queryClient}>
