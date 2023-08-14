@@ -41,13 +41,14 @@ export default function Home() {
   );
 
   if (!user) return <></>;
+
   return (
-    <div className="p-2">
+    <div className="p-2 flex flex-col gap-2 m-2">
       <h1 className="text-3xl">This is the start spage</h1>
       <h3 className="text-l">
         Logged in as: <span className="text-blue-600">{user?.email}</span>
       </h3>
-      <nav className="flex flex-col gap-2 m-2 w-fit ">
+      <nav className="flex flex-col gap-2  w-fit ">
         <Link className="flex" href={'example-page'}>
           <Button
             className="w-full"
@@ -58,22 +59,31 @@ export default function Home() {
             Example page
           </Button>
         </Link>
-        <div className="relative">
+        <Link className="flex" href={'canvas-playground'}>
           <Button
-            className={'w-full'}
-            feLoading={isLoading}
-            feType="primary"
-            onClick={() => mutate()}
+            feType="secondary"
+            feSize="sm"
+            feIcon={{ feIcon: 'recAction', position: 'right' }}
           >
-            Test fetch
+            Canvas playground
           </Button>
-          {isSuccess && (
-            <div className="absolute top-1/2 right-0 bg-green-700 rounded-full h-6 w-6 grid place-content-center -translate-y-1/2 translate-x-[125%]">
-              <Icon feIcon="check" feColor="white" />
-            </div>
-          )}
-        </div>
+        </Link>
       </nav>
+      <div className="relative">
+        <Button
+          className={'w-full'}
+          feLoading={isLoading}
+          feType="primary"
+          onClick={() => mutate()}
+        >
+          Test fetch
+        </Button>
+        {isSuccess && (
+          <div className="absolute top-1/2 right-0 bg-green-700 rounded-full h-6 w-6 grid place-content-center -translate-y-1/2 translate-x-[125%]">
+            <Icon feIcon="check" feColor="white" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
